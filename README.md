@@ -1,3 +1,21 @@
+# Steps to getting the project running
+
+First, open command prompt/terminal and head to the project folder that you have clone from github.
+
+Secondly, once inside the folder, run the command "npm i". This will install all required packages for the app.
+
+Once installation is complete, ignore any warnings of deprication or vulnerabilities.
+
+You will want to now run the command while in the same folder, "npm start". This will start the project and after a few seconds, the app website will open.
+
+Now we want to start up the server app.
+
+Navigate in the terminal/command prompt to the folder called "server"
+
+While in this folder, use the two commands used earlier. "npm i", and then "npm start"
+
+Now the two apps are running.
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
