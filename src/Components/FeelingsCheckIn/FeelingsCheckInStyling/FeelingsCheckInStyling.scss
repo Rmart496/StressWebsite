@@ -1,0 +1,58 @@
+@import url("https://fonts.googleapis.com/css?family=Raleway:300,400,400i,700");
+
+.main-container 
+{
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  margin: 0;
+  padding: 0;
+}
+
+.main-container h2 
+{
+  color: #555;
+  font-size: 30px;
+  font-weight: 300;
+}
+
+.radio-buttons 
+{
+  width: 100%;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.custom-radio input 
+{
+  display: none;
+}
+
+.radio-btn 
+{
+  margin: 10px;
+  width: 220px;
+  border: 3px solid transparent;
+  display: inline-block;
+  border-radius: 10px;
+  text-align: center;
+  box-shadow: 0 0 20px #c3c3c367;
+  cursor: pointer;
+}
+
+.custom-radio input:checked + .radio-btn 
+{
+  border: 2px solid #FFDAE9;
+}
+
+.questions {
+  height: 800px;
+  background-color: #274C77;
+  color: white;
+}
+
+.results {
+  height: 800px;
+}

@@ -1,0 +1,111 @@
+.customCarousel {
+  position: relative;
+  font-family: "Inter", sans-serif;
+  height: 400px;
+  background-size: cover;
+  padding: 0px;
+  overflow:hidden;
+  img {
+    width: 100%; /* Set the width to 100% to fill the carousel item */
+    height: 100%; /* Set the height to 100% to fill the carousel item */
+    object-fit: cover; /* Maintain aspect ratio while covering the entire space */
+    overflow:hidden;
+  }
+  .curve {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1; /* Ensure SVG curve is in front of the image */
+    
+  }
+}
+
+.jumbotron {
+  position: relative;
+  height: 400px;
+  .jumbotron-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    overflow: hidden;
+  }
+
+  .jumbotron-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(255, 255, 255, 0.8); /* Background color with transparency */
+    padding: 20px;
+    color: #6096BA;
+    background-color: white;
+    font-size: 100px;
+    letter-spacing: 10px;
+    border-radius: 25px;
+}
+}
+
+.darkBlueBG {
+  background-color: #274C77
+}
+
+.blueBG {
+  background-color: #6096BA
+}
+
+.lightBlueBG {
+  background-color: #A3CEF1
+}
+
+.container-fluid {
+  background-color: #E7ECEF
+}
+
+#membership-container {
+  text-align: center;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#plans {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 30px;
+}
+
+.plan {
+  background-color: #274C77; /* Replace with the actual color for the plan boxes */
+  border-radius: 10px;
+  padding: 20px;
+  margin-bottom: 20px;
+  min-width: 300px;
+}
+
+.plan h2 {
+  font-size: 24px; /* Adjust font size as needed */
+  color: #ffffff; /* Adjust text color as needed */
+  margin-bottom: 10px;
+}
+
+.plan p {
+  font-size: 18px; /* Adjust font size as needed */
+  color: #ffffff; /* Adjust text color as needed */
+}
+
+.price-per-month {
+  font-size: 14px; /* Adjust font size as needed */
+  color: #ffffff; /* Adjust text color as needed */
+  margin-top: 5px;
+}
+
+path {
+  fill: transparent;
+}
+
+text {
+  fill: #A3CEF1;
+}
