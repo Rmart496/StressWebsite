@@ -61,12 +61,7 @@ const AmbientPlayerPage = () => {
 				</h3>
 				<audio controls></audio>
 				</div>
-				<div className="card" style={{backgroundColor: '#03045e'}}>
-				<h3 className="card_heading">
-					Thunder Storm
-				</h3>
-				<audio controls></audio>
-				</div>
+
 			</div>
 		</section>
 		
