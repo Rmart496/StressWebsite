@@ -25,41 +25,41 @@ const AmbientPlayerPage = () => {
 			In this way, ambient music can be seen as a form of sonic art, allowing the listener to enter into a different state of mind and to experience sound in a new way.
 		</p>
 			<div className="card-grid">
-				<div className="card" style={{backgroundColor: '#d4a373'}}>
+				<div className="card" style={{backgroundImage: "url('https://images.unsplash.com/photo-1600093463592-8e36ae95ef56?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')", backgroundSize: 'cover'}}>
 					<h3 className="card_heading">
 						Coffee Shop
 					</h3>
-					<audio controls></audio>
+					<audio controls src="./audio/coffeeShop.mp3"></audio>
 				</div>
 				<div className="card" style={{backgroundImage: "url('https://images.unsplash.com/photo-1539706173505-888cd1746ac7?q=80&w=2787&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')", backgroundSize: 'cover'}}>
 					<h3 className="card_heading">
-						Campfire
+						Warm Campfire
 					</h3>
-					<audio controls src="./audio/campFire.aiff"></audio>
+					<audio controls src="./audio/campFire.wav"></audio>
 				</div>
 				<div className="card" style={{backgroundImage: "url('https://images.unsplash.com/photo-1559825481-12a05cc00344?q=80&w=2565&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')", backgroundSize: 'cover'}}>
 					<h3 className="card_heading">
-						Ocean
+						Ocean Waves
 					</h3>
 					<audio controls src="./audio/seasideWaves.wav"></audio>
 				</div>
-				<div className="card" style={{backgroundImage: "url('https://images.unsplash.com/photo-1618329397023-cc688d12bb79?q=80&w=2487&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')", backgroundSize: 'cover'}}>
+				<div className="card" style={{backgroundImage: "url('https://images.unsplash.com/photo-1621483092616-780665772d83?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')", backgroundSize: 'cover'}}>
 					<h3 className="card_heading">
 						Thunder Storm
 					</h3>
-					<audio controls></audio>
+					<audio controls src="./audio/thunderStorm.mp3"></audio>
 				</div>
-				<div className="card" style={{backgroundColor: '#3a5a40'}}>
+				<div className="card" style={{backgroundImage: "url('https://images.unsplash.com/photo-1604213410393-89f141bb96b8?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')", backgroundSize: 'cover'}}>
 					<h3 className="card_heading">
-						Jungle
+						Deep Jungle
 					</h3>
-					<audio controls></audio>
+					<audio controls src="./audio/deepJungle.mp3"></audio>
 				</div>
-				<div className="card" style={{backgroundColor: '#0077b6'}}>
+				<div className="card" style={{backgroundImage: "url('https://images.unsplash.com/photo-1608676411474-e1d95fcc470c?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')", backgroundSize: 'cover'}}>
 				<h3 className="card_heading">
-					Ocean
+						Flowing Waterfall
 				</h3>
-				<audio controls></audio>
+				<audio controls src="./audio/flowingWaterfall.mp3"></audio>
 				</div>
 
 			</div>
