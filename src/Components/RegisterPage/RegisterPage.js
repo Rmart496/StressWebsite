@@ -36,6 +36,10 @@ const RegisterPage = () => {
 		// console.log(userData);
 		
 		const userToken = await AuthServiceInstance.registerUser(userData);
+		if (userToken.code === "auth/weak-password") {
+			setMissingInfoMessage("Password must be at least 6 characters long.");
+			return;
+		}
 		
 		// TODO: handle error if user account already exists
 		if(userToken.userEmail === undefined) {
