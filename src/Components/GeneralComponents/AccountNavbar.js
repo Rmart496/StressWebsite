@@ -61,7 +61,7 @@ const AccountNavbar = () => {
 
 						<li className="nav-item">
 							{
-								sessionStorage.getItem('name') !== null ?
+								sessionStorage.getItem('user_name') !== null ?
 							(<Link component={RouterLink} to="/dashboard" underline="hover" style={ createAccountButton } className="p-2 m-2 text-white">
 								Dashboard
 							</Link>) : 
@@ -73,7 +73,7 @@ const AccountNavbar = () => {
 
 						<li className="nav-item">
 							{
-								sessionStorage.getItem('name') !== null ?
+								sessionStorage.getItem('user_name') !== null ?
 							null : (<Link component={RouterLink} to="/register" underline="hover" className="p-2 m-2" style={buttonDarkBlueBackground}>
 								Create account
 							</Link>)
@@ -82,7 +82,7 @@ const AccountNavbar = () => {
 
 						<li className="nav-item">
 							{
-							sessionStorage.getItem('name') === null ?
+							sessionStorage.getItem('user_name') === null ?
 								null : ( 
 							<Link style={ createAccountButton } onClick={handleLogout} underline="hover" className="p-2 m-2 text-white"> Logout </Link>)
 
@@ -91,8 +91,8 @@ const AccountNavbar = () => {
 						
 						<li className="nav-item">
 							{
-							sessionStorage.getItem('name') === null ?
-								null : (<h5 className="d-inline-block pr-2 m-0 text-white">Hello, {sessionStorage.getItem('name')}</h5>)
+							sessionStorage.getItem('user_name') === null ?
+								null : (<h5 className="d-inline-block pr-2 m-0 text-white">Hello, {sessionStorage.getItem('user_name')}</h5>)
 
 							}
 						</li>
