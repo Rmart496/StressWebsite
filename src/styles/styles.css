@@ -72,3 +72,16 @@ footer {
   text-align: center;
   padding: 1rem 0;
 }
+
+.footer-link {
+  color: black; /* Change text color */
+  text-decoration: none; /* Remove underline */
+}
+
+.footer-link:hover {
+  text-decoration: underline; /* Add underline on hover for better UX */
+}
+
+.footer-text {
+  color: black; /* Change non-link text color */
+}

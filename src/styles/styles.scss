@@ -94,5 +94,14 @@ footer nav ul li a {
   text-decoration: none !important;
 }
 
+.footer-link {
+  color: black; /* Change text color */
+  text-decoration: none; /* Remove underline */
+}
+
+.footer-link:hover {
+  text-decoration: underline; /* Add underline on hover for better UX */
+}
+
 
   

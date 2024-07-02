@@ -1,0 +1,56 @@
+.learn-more-page {
+  padding: 2rem;
+
+  header {
+    text-align: center;
+    margin-bottom: 2rem;
+
+    h1 {
+      font-size: 2.5rem;
+      color: #fff; /* Change text color to white */
+    }
+
+    p {
+      font-size: 1.25rem; /* Make the introductory text bigger */
+      color: #fff; /* Change text color to white */
+      background-color: transparent; /* Remove the blue background */
+      padding: 1rem 0;
+    }
+  }
+
+  .tips, .resources {
+    margin-bottom: 2rem;
+
+    h2 {
+      font-size: 2rem;
+      color: #2c3e50;
+      text-align: center; /* Center the section titles */
+    }
+
+    ul {
+      list-style-type: none;
+      padding: 0;
+
+      li {
+        font-size: 1.25rem;
+        color: #2c3e50;
+        margin: 0.5rem 0;
+      }
+    }
+  }
+
+  .resources {
+    ul {
+      li {
+        a {
+          color: #3498db;
+          text-decoration: none;
+
+          &:hover {
+            text-decoration: underline;
+          }
+        }
+      }
+    }
+  }
+}

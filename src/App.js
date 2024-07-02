@@ -12,6 +12,7 @@ import FeelingsCheckInPage from "./Components/FeelingsCheckIn/FeelingsCheckIn.js
 import AmbientMusicPlayerPage from "./Components/AmbientPlayerPage/AmbientPlayerPage.js";
 import ErrorPage from "./Components/ErrorPage/ErrorPage.js"
 import AboutPage from './Components/AboutPage/AboutPage.js';
+import LearnMorePage from './Components/LearnMorePage/LearnMorePage.js';
 import './styles/styles.css';
 
 const App = () => {
@@ -24,6 +25,7 @@ const App = () => {
                         <li><Link to="/">Home</Link></li>
                         <li><Link to="/about">About Us</Link></li>
                         <li><Link to="/contact">Contact Us</Link></li>
+                        <li><Link to="/learnmore">Learn More</Link></li>
                         <li><Link to="/login">Sign In</Link></li>
                         <li><Link to="/register" className="button">Create Account</Link></li>
                     </ul>
@@ -34,7 +36,8 @@ const App = () => {
                 <Route path="/login" element={<LoginPage />} />
                 <Route path="/register" element={<RegisterPage />} />
                 <Route path="/forgot-password" element={<ResetPasswordPage />} />
-                <Route path="/about" element={<AboutPage />} />  
+                <Route path="/about" element={<AboutPage />} /> 
+                <Route path="/learnmore" element={<LearnMorePage />} />
                 <Route element={<ProtectedRoute />}> 
                     <Route path="/dashboard" element={<DashboardPage />} />
                     <Route path="/my-profile" element={<ProfilePage />} />

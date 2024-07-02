@@ -1,0 +1,66 @@
+.about-page {
+    .intro {
+      h1 {
+        text-align: center;
+        color: #2c3e50;
+        margin-top: 2rem;
+      }
+      p {
+        text-align: center;
+        color: #7f8c8d;
+        margin: 1rem auto;
+        max-width: 800px;
+      }
+    }
+  
+    .section {
+      margin: 2rem 0;
+  
+      h2 {
+        text-align: center;
+        color: #2c3e50;
+      }
+  
+      p {
+        color: #7f8c8d;
+        max-width: 800px;
+        margin: 0.5rem auto;
+        text-align: center;
+      }
+  
+      .team-member {
+        display: inline-block;
+        text-align: center;
+        margin: 1rem;
+        img {
+          border-radius: 50%;
+          width: 100px;
+          height: 100px;
+        }
+        h3 {
+          margin: 0.5rem 0;
+        }
+      }
+    }
+  
+    .contact-info {
+      h2 {
+        text-align: center;
+        color: #2c3e50;
+      }
+      p {
+        text-align: center;
+        color: #7f8c8d;
+        margin: 0.5rem auto;
+      }
+    }
+  
+    footer {
+      background-color: #2c3e50;
+      color: #fff;
+      text-align: center;
+      padding: 1rem 0;
+      margin-top: 2rem;
+    }
+  }
+  
