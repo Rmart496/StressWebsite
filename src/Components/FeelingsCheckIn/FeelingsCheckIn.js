@@ -65,10 +65,10 @@ const FeelingsCheckIn = () => {
     };
 
     const feelingImages = [
-        { src: '/path/to/happy.svg', alt: 'Happy', value: 'happy' },
-        { src: '/path/to/sad.svg', alt: 'Sad', value: 'sad' },
-        { src: '/path/to/angry.svg', alt: 'Angry', value: 'angry' },
-        { src: '/path/to/stressed.svg', alt: 'Stressed', value: 'stressed' },
+        { src: 'happy.svg', alt: 'Happy', value: 'happy' },
+        { src: 'sad.svg', alt: 'Sad', value: 'sad' },
+        { src: 'angry.svg', alt: 'Angry', value: 'angry' },
+        { src: 'stressed.svg', alt: 'Stressed', value: 'stressed' },
     ];
 
     return (
