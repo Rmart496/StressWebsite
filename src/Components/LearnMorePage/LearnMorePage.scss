@@ -1,56 +1,48 @@
-.learn-more-page {
-  padding: 2rem;
+.learn-more-container {
+  padding: 20px;
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: left;
+}
 
-  header {
-    text-align: center;
-    margin-bottom: 2rem;
+.learn-more-title {
+  font-size: 36px;
+  margin-bottom: 20px;
+}
 
-    h1 {
-      font-size: 2.5rem;
-      color: #fff; /* Change text color to white */
-    }
+.learn-more-intro {
+  font-size: 18px;
+  margin-bottom: 20px;
+}
 
-    p {
-      font-size: 1.25rem; /* Make the introductory text bigger */
-      color: #fff; /* Change text color to white */
-      background-color: transparent; /* Remove the blue background */
-      padding: 1rem 0;
-    }
-  }
+.learn-more-image {
+  width: 100%;
+  height: auto;
+  margin-bottom: 10px;
+}
 
-  .tips, .resources {
-    margin-bottom: 2rem;
+.learn-more-caption {
+  font-size: 14px;
+  color: #666;
+  text-align: center;
+}
 
-    h2 {
-      font-size: 2rem;
-      color: #2c3e50;
-      text-align: center; /* Center the section titles */
-    }
+.tips-section, .resources-section {
+  margin-bottom: 40px;
+}
 
-    ul {
-      list-style-type: none;
-      padding: 0;
+.tips-section ul, .resources-section ul {
+  list-style-type: disc;
+  margin-left: 20px;
+}
 
-      li {
-        font-size: 1.25rem;
-        color: #2c3e50;
-        margin: 0.5rem 0;
-      }
-    }
-  }
+.video-resources {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
 
-  .resources {
-    ul {
-      li {
-        a {
-          color: #3498db;
-          text-decoration: none;
-
-          &:hover {
-            text-decoration: underline;
-          }
-        }
-      }
-    }
-  }
+.video-resources iframe {
+  width: 100%;
+  height: 315px;
 }
