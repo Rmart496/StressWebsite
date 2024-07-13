@@ -2,7 +2,6 @@
   padding: 20px;
   max-width: 800px;
   margin: 0 auto;
-  text-align: left;
 }
 
 .learn-more-title {
@@ -13,6 +12,7 @@
 .learn-more-intro {
   font-size: 18px;
   margin-bottom: 20px;
+  text-align: center; /* Center only this part */
 }
 
 .learn-more-image {

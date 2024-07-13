@@ -1,21 +1,24 @@
 import React from "react";
 import { Routes, Route, Link } from 'react-router-dom';
 import LoginPage from './Components/LoginPage/LoginPage.js';
-import SplashPage from './Components/SplashPage/SplashPage.js'
+import SplashPage from './Components/SplashPage/SplashPage.js';
 import RegisterPage from './Components/RegisterPage/RegisterPage.js';
 import ResetPasswordPage from './Components/ResetPassword/ResetPassword.js';
 import ProtectedRoute from './Components/GeneralComponents/ProtectedRoute.js';
 import DashboardPage from './Components/DashboardPage/DashboardPage.js';
 import ProfilePage from './Components/ProfilePage/ProfilePage.js';
-import RestYourMindPage from './Components/RestYourMindPage/RestYourMindPage.js'
+import RestYourMindPage from './Components/RestYourMindPage/RestYourMindPage.js';
 import FeelingsCheckInPage from "./Components/FeelingsCheckIn/FeelingsCheckIn.js";
 import AmbientMusicPlayerPage from "./Components/AmbientPlayerPage/AmbientPlayerPage.js";
-import ErrorPage from "./Components/ErrorPage/ErrorPage.js"
+import ErrorPage from "./Components/ErrorPage/ErrorPage.js";
 import AboutPage from './Components/AboutPage/AboutPage.js';
 import LearnMorePage from './Components/LearnMorePage/LearnMorePage.js';
+import AuthServiceInstance from './Components/GeneralComponents/AuthService.js';
 import './styles/styles.css';
 
 const App = () => {
+    const isAuthenticated = AuthServiceInstance.isAuthenticated();
+
     return (
         <>
             <header>
@@ -26,8 +29,17 @@ const App = () => {
                         <li><Link to="/about">About Us</Link></li>
                         <li><Link to="/contact">Contact Us</Link></li>
                         <li><Link to="/learnmore">Learn More</Link></li>
-                        <li><Link to="/login">Sign In</Link></li>
-                        <li><Link to="/register" className="button">Create Account</Link></li>
+                        {isAuthenticated ? (
+                            <>
+                                <li><Link to="/dashboard">Dashboard</Link></li>
+                                <li><Link to="/my-profile">My Profile</Link></li>
+                            </>
+                        ) : (
+                            <>
+                                <li><Link to="/login">Sign In</Link></li>
+                                <li><Link to="/register" className="button">Create Account</Link></li>
+                            </>
+                        )}
                     </ul>
                 </nav>
             </header>
