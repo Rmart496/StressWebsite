@@ -10,7 +10,8 @@ import ProfilePage from './Components/ProfilePage/ProfilePage.js';
 import RestYourMindPage from './Components/RestYourMindPage/RestYourMindPage.js'
 import FeelingsCheckInPage from "./Components/FeelingsCheckIn/FeelingsCheckIn.js";
 import AmbientMusicPlayerPage from "./Components/AmbientPlayerPage/AmbientPlayerPage.js";
-import ErrorPage from "./Components/ErrorPage/ErrorPage.js"
+import RoadMapPage from "./Components/RoadMapPage/RoadMapPage.js";
+import ErrorPage from "./Components/ErrorPage/ErrorPage.js";
 
 const App = () => {
 
@@ -27,6 +28,7 @@ const App = () => {
 					<Route path="/restyourmind" element={<RestYourMindPage />} /> 
 					<Route path="/check-in" element={<FeelingsCheckInPage />}/>
 					<Route path="/ambientmusic" element={<AmbientMusicPlayerPage />}/>
+					<Route path="/roadmap" element={<RoadMapPage/>}/>
 				</Route> 
 				<Route path="/*" element={<ErrorPage />} />
 				
