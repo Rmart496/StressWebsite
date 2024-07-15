@@ -159,8 +159,6 @@ const AmbientPlayerPage = () => {
 		<div style={{display: "block"}}>
 			<ReactECharts option={pieChart_Triggers} style={{height: "450px", width: "30%", float: "left"}}/>
 			<ReactECharts option={pieChart_Feelings} style={{height: "450px", width: "30%", float: "left"}}/>
-			<ReactECharts option={pieChart_Triggers} style={{height: "450px", width: "30%", float: "left"}}/>
-			<ReactECharts option={pieChart_Feelings} style={{height: "450px", width: "30%", float: "left"}}/>
 			<ReactECharts option={pieChart_Signs} style={{height: "450px", width: "30%", float: "left"}}/>
 			<ReactECharts option={pieChart_Strategies} style={{height: "450px", width: "30%", float: "left"}}/>
 			<ReactECharts option={lineGraph} style={{height: "450px", width: "50%", float: "left"}}/>
