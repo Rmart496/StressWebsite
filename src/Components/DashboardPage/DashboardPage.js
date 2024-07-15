@@ -33,7 +33,7 @@ const DashboardPage = () => {
 					</button>
 					<button className="menu-button" type="button" onClick={() => navigate('/roadmap')}> 
 						<img src={calIcon} alt="Calendar Icon"/>
-						De-Stress My Life Roadmap 
+						My Life Roadmap 
 					</button>
 					
 				</div>

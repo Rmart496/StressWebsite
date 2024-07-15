@@ -47,7 +47,7 @@ const LoginWidget = () => {
 			
 			sessionStorage.setItem('login_token', userToken.token);
 			sessionStorage.setItem('user_email', userToken.userEmail);
-			sessionStorage.setItem('name', userToken.userName);
+			sessionStorage.setItem('user_name', userToken.userName);
 			navigate("/dashboard");
 		}
 		

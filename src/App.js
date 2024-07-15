@@ -10,6 +10,7 @@ import ProfilePage from './Components/ProfilePage/ProfilePage.js';
 import RestYourMindPage from './Components/RestYourMindPage/RestYourMindPage.js';
 import FeelingsCheckInPage from "./Components/FeelingsCheckIn/FeelingsCheckIn.js";
 import AmbientMusicPlayerPage from "./Components/AmbientPlayerPage/AmbientPlayerPage.js";
+
 import ErrorPage from "./Components/ErrorPage/ErrorPage.js";
 import AboutPage from './Components/AboutPage/AboutPage.js';
 import LearnMorePage from './Components/LearnMorePage/LearnMorePage.js';
@@ -17,10 +18,15 @@ import AuthServiceInstance from './Components/GeneralComponents/AuthService.js';
 import ContactPage from './Components/ContactUsPage/ContactUs.js';
 import './styles/styles.css';
 
+import RoadMapPage from "./Components/RoadMapPage/RoadMapPage.js";
+import ErrorPage from "./Components/ErrorPage/ErrorPage.js";
+
+
 const App = () => {
     const isAuthenticated = AuthServiceInstance.isAuthenticated();
 
     return (
+
         <>
             <header>
                 <nav>
@@ -62,6 +68,27 @@ const App = () => {
                 <Route path="/*" element={<ErrorPage />} />
             </Routes>
         </>
+
+        <Router>
+			<Routes>
+				<Route path="/" element={<SplashPage />} />
+				<Route path="/login" element={<LoginPage />} />
+				<Route path="/register" element={<RegisterPage />} />
+				<Route path="/forgot-password" element={<ResetPasswordPage />} />
+				<Route element={<ProtectedRoute />} > 
+					<Route path="/dashboard" element={<DashboardPage />} />
+					<Route path="/my-profile" element={<ProfilePage />} />
+					<Route path="/restyourmind" element={<RestYourMindPage />} /> 
+					<Route path="/check-in" element={<FeelingsCheckInPage />}/>
+					<Route path="/ambientmusic" element={<AmbientMusicPlayerPage />}/>
+					<Route path="/roadmap" element={<RoadMapPage/>}/>
+				</Route> 
+				<Route path="/*" element={<ErrorPage />} />
+				
+			</Routes>
+        </Router>
+        
+
     );
 };
 

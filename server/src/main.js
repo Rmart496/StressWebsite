@@ -42,11 +42,10 @@ app.post("/api/auth/register", async (req, res) => {
 		res.status(200).json({ name, userEmail, token })
 	  })
 	  .catch((error) => {
-		console.log(error);
 		if (error.code === "auth/email-already-in-use") {
 			const errorMessage = "Bad request. Check if user account exists already, or check server connection."
-			res.status(400).json({ errorMessage });
 		}
+		res.status(400).json(error);
 	  });
 	
 });

@@ -32,10 +32,19 @@ const RegisterPage = () => {
 		userData['email'] = email;
 		userData['password'] = password; // TODO: hash the password, do not send in plaintext
 		userData['name'] = name;
+
+		if (/(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*\W)/g.exec(userData['password']) == null) {
+			setMissingInfoMessage("Password must contain an upper and lower case character, a digit, and a special character.");
+			return;
+		}
 		
 		// console.log(userData);
 		
 		const userToken = await AuthServiceInstance.registerUser(userData);
+		if (userToken.code === "auth/weak-password") {
+			setMissingInfoMessage("Password must be at least 6 characters long.");
+			return;
+		}
 		
 		// TODO: handle error if user account already exists
 		if(userToken.userEmail === undefined) {

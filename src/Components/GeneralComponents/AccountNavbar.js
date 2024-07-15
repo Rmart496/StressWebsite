@@ -56,6 +56,7 @@ const AccountNavbar = () => {
                         </Link>
                     </li>
 
+
                     <li className="nav-item">
                         {sessionStorage.getItem('name') !== null ? (
                             <Link
@@ -108,6 +109,42 @@ const AccountNavbar = () => {
                             </Link>
                         )}
                     </li>
+
+						<li className="nav-item">
+							{
+								sessionStorage.getItem('user_name') !== null ?
+							(<Link component={RouterLink} to="/dashboard" underline="hover" style={ createAccountButton } className="p-2 m-2 text-white">
+								Dashboard
+							</Link>) : 
+							(<Link component={RouterLink} to="/login" underline="hover" className="p-2 m-2">
+								Sign in
+							</Link>)
+							}
+						</li>
+
+						<li className="nav-item">
+							{
+								sessionStorage.getItem('user_name') !== null ?
+							null : (<Link component={RouterLink} to="/register" underline="hover" className="p-2 m-2" style={buttonDarkBlueBackground}>
+								Create account
+							</Link>)
+							}
+						</li>
+
+						<li className="nav-item">
+							{
+							sessionStorage.getItem('user_name') === null ?
+								null : ( 
+							<Link style={ createAccountButton } onClick={handleLogout} underline="hover" className="p-2 m-2 text-white"> Logout </Link>)
+
+							}
+						</li>
+						
+						<li className="nav-item">
+							{
+							sessionStorage.getItem('user_name') === null ?
+								null : (<h5 className="d-inline-block pr-2 m-0 text-white">Hello, {sessionStorage.getItem('user_name')}</h5>)
+
 
                     <li className="nav-item">
                         {sessionStorage.getItem('name') === null ? null : (
