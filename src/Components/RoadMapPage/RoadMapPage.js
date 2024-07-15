@@ -6,58 +6,96 @@ import ReactECharts from "echarts-for-react";
 import EChartsReact from 'echarts-for-react';
 
 const AmbientPlayerPage = () => {
-	const pieChart = {
-		title: {
-			text: 'Referer of a Website',
-			subtext: 'Fake Data',
-			left: 'center'
-		},
-		tooltip: {
-			trigger: 'item'
-		},
-		legend: {
-			show: false,
-			orient: 'vertical',
-			left: 'left'
-		},
-		series: [
-			{
-			name: 'Access From',
-			type: 'pie',
-			radius: '50%',
-			data: [
-				{ value: 1048, name: 'Search Engine' },
-				{ value: 735, name: 'Direct' },
-				{ value: 580, name: 'Email' },
-				{ value: 484, name: 'Union Ads' },
-				{ value: 300, name: 'Video Ads' }
-			],
-			emphasis: {
-				itemStyle: {
-				shadowBlur: 10,
-				shadowOffsetX: 0,
-				shadowColor: 'rgba(0, 0, 0, 0.5)'
+	function makeChart(title, data) {
+		return {
+			title: {
+				text: title,
+				subtext: '',
+				left: 'center',
+				padding: [40, 0, 0, 0]
+			},
+			tooltip: {
+				trigger: 'item'
+			},
+			legend: {
+				show: true,
+				orient: 'vertical',
+				left: 'right',
+				padding: [25, 0, 0, 0],
+				itemGap: 25
+			},
+			series: [
+				{
+				name: 'Access From',
+				type: 'pie',
+				radius: '50%',
+				data: data,
+				emphasis: {
+					itemStyle: {
+					shadowBlur: 10,
+					shadowOffsetX: 0,
+					shadowColor: 'rgba(0, 0, 0, 0.5)'
+					}
+				},
+				label: {
+					show: false,
 				}
-			}
-			}
-		]
-	};
+				}
+			],
+		}
+	}
+
+	const pieChart_Triggers = makeChart("Triggers", [
+		{ value: 20, name: '20% Home' },
+		{ value: 40, name: '40% Work' },
+		{ value: 20, name: '20% School' },
+		{ value: 20, name: '20% Social Life' },
+	]);
+
+	const pieChart_Feelings = makeChart("Feelings", [
+		{ value: 20, name: '20% Excited' },
+		{ value: 20, name: '20% Happy' },
+		{ value: 40, name: '40% Indifferent' },
+		{ value: 0, name: '0% Sad' },
+		{ value: 20, name: '20% Angry' },
+	]);
+
+	const pieChart_Signs = makeChart("Signs", [
+		{ value: 20, name: '20% Body' },
+		{ value: 40, name: '40% Mind' },
+		{ value: 20, name: '20% Emotion' },
+		{ value: 20, name: '20% Behavior' },
+	]);
+
+	const pieChart_Strategies = makeChart("Strategies", [
+		{ value: 20, name: '20% Breathing' },
+		{ value: 40, name: '20% Positive Talk' },
+		{ value: 0, name: '0% Listen To Music' },
+		{ value: 20, name: '20% Talk To Friends' },
+		{ value: 20, name: '40% Group Support' },
+	]);
 
 	const lineGraph = {
 		xAxis: {
 		  type: 'category',
-		  data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+		  data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri']
 		},
 		yAxis: {
-		  type: 'value'
+		  type: 'value',
+		  min: 1,
+		  max: 5
 		},
 		series: [
 		  {
-			data: [820, 932, 901, 934, 1290, 1330, 1320],
+			data: [4, 1, 5, 4, 2],
 			type: 'line',
 			smooth: true
 		  }
-		]
+		],
+		grid: {
+			width: 1000,
+			left: "center"
+		}
 	};
 
 	const calendar = {
@@ -118,15 +156,15 @@ const AmbientPlayerPage = () => {
 		
 	return (
 		<SkeletonForAllPages>
-		
-		<div id="pieChart">
-			<ReactECharts option={pieChart} />
-		</div>
-		<div>
-		<ReactECharts option={lineGraph} />
-		</div>
-		<div>
-		<ReactECharts option={calendar} style={{height: "450px", width: "100%"}}/>
+		<div style={{display: "block"}}>
+			<ReactECharts option={pieChart_Triggers} style={{height: "450px", width: "30%", float: "left"}}/>
+			<ReactECharts option={pieChart_Feelings} style={{height: "450px", width: "30%", float: "left"}}/>
+			<ReactECharts option={pieChart_Triggers} style={{height: "450px", width: "30%", float: "left"}}/>
+			<ReactECharts option={pieChart_Feelings} style={{height: "450px", width: "30%", float: "left"}}/>
+			<ReactECharts option={pieChart_Signs} style={{height: "450px", width: "30%", float: "left"}}/>
+			<ReactECharts option={pieChart_Strategies} style={{height: "450px", width: "30%", float: "left"}}/>
+			<ReactECharts option={lineGraph} style={{height: "450px", width: "50%", float: "left"}}/>
+			<ReactECharts option={calendar} style={{height: "450px", width: "50%", float: "left"}}/>
 		</div>
 		
 		</SkeletonForAllPages>
