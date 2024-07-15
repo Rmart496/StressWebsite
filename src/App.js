@@ -14,6 +14,7 @@ import ErrorPage from "./Components/ErrorPage/ErrorPage.js";
 import AboutPage from './Components/AboutPage/AboutPage.js';
 import LearnMorePage from './Components/LearnMorePage/LearnMorePage.js';
 import AuthServiceInstance from './Components/GeneralComponents/AuthService.js';
+import ContactPage from './Components/ContactUsPage/ContactUs.js';
 import './styles/styles.css';
 
 const App = () => {
@@ -50,6 +51,7 @@ const App = () => {
                 <Route path="/forgot-password" element={<ResetPasswordPage />} />
                 <Route path="/about" element={<AboutPage />} /> 
                 <Route path="/learnmore" element={<LearnMorePage />} />
+                <Route path="/contact" element={<ContactPage />} />
                 <Route element={<ProtectedRoute />}> 
                     <Route path="/dashboard" element={<DashboardPage />} />
                     <Route path="/my-profile" element={<ProfilePage />} />

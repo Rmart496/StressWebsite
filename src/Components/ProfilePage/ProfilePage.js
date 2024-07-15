@@ -8,18 +8,22 @@ const ProfilePage = () => {
   const [calmsMe, setCalmsMe] = useState('');
 
   useEffect(() => {
-    // Load saved data from session storage when the component mounts
-    const savedBio = sessionStorage.getItem('bio');
-    const savedCalmsMe = sessionStorage.getItem('calmsMe');
-    if (savedBio) setBio(savedBio);
-    if (savedCalmsMe) setCalmsMe(savedCalmsMe);
+    const savedBio = localStorage.getItem('bio');
+    const savedCalmsMe = localStorage.getItem('calmsMe');
+
+    if (savedBio) {
+      setBio(savedBio);
+    }
+
+    if (savedCalmsMe) {
+      setCalmsMe(savedCalmsMe);
+    }
   }, []);
 
   const handleSave = () => {
-    // Save the bio and calmsMe to session storage
-    sessionStorage.setItem('bio', bio);
-    sessionStorage.setItem('calmsMe', calmsMe);
-    alert('Profile information saved successfully!');
+    localStorage.setItem('bio', bio);
+    localStorage.setItem('calmsMe', calmsMe);
+    alert('Changes saved!');
   };
 
   return (
@@ -57,7 +61,7 @@ const ProfilePage = () => {
             maxLength="250"
           />
         </section>
-        <button onClick={handleSave} className="save-button">Save</button> {/* Single save button */}
+        <button onClick={handleSave} className="save-button">Save</button>
       </div>
     </div>
   );
