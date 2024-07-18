@@ -1,0 +1,51 @@
+.about-page {
+  .about-images {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+
+    img {
+      width: 24%;
+      height: auto;
+      border-radius: 5px;
+    }
+  }
+
+  .about-content {
+    padding: 0 20px;
+    text-align: center;
+
+    h1 {
+      text-align: center;
+      margin-top: 0;
+    }
+
+    p {
+      margin: 20px 0;
+      text-align: center;
+    }
+
+    .about-sections {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 40px;
+
+      .about-section {
+        width: 48%;
+        border: 2px solid #ccc;
+        border-radius: 5px;
+        padding: 20px;
+        background-color: #f9f9f9;
+        text-align: center;
+
+        h2 {
+          text-align: center;
+        }
+
+        p {
+          text-align: center;
+        }
+      }
+    }
+  }
+}

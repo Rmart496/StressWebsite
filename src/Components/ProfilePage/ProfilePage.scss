@@ -1,0 +1,71 @@
+.profile-page {
+  display: flex;
+  margin: 20px;
+
+  .profile-sidebar {
+    width: 200px;
+    margin-right: 20px;
+
+    nav ul {
+      list-style: none;
+      padding: 0;
+
+      li {
+        margin-bottom: 10px;
+
+        a {
+          color: #274C77;
+          text-decoration: none;
+
+          &:hover {
+            text-decoration: underline;
+          }
+        }
+      }
+    }
+  }
+
+  .profile-content {
+    flex: 1;
+
+    .profile-header {
+      text-align: center;
+      position: relative;
+      background-color: transparent !important; /* Override global header background */
+
+      .profile-pic {
+        width: 150px; /* Adjust size as needed */
+        height: 150px; /* Adjust size as needed */
+        border-radius: 50%;
+        margin-bottom: 20px;
+      }
+    }
+
+    .profile-bio,
+    .profile-calms-me {
+      margin-bottom: 20px;
+
+      h2 {
+        margin-bottom: 10px;
+      }
+
+      textarea {
+        width: 100%;
+        padding: 10px;
+        box-sizing: border-box;
+      }
+    }
+
+    .save-button {
+      display: block;
+      width: 150px; /* Set the desired width */
+      padding: 10px;
+      background-color: #274C77;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+  }
+}

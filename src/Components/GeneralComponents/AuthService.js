@@ -49,6 +49,13 @@ class AuthService {
 		}).then(response => response.json()
 		).catch(error => console.error('There was some kind of issue!', error))
 	}
+
+	isAuthenticated = () => {
+        return sessionStorage.getItem('name') !== null;
+    }
+
+
+	
 // ###################################################################################
 // TODO: THERE IS AN UNHANDLED PROMISE HERE THAT IS CAUSING THE LOAD FAILED ERROR
 	addFeelingCheckIn = async (userCheckIn) => {
