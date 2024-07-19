@@ -1,25 +1,28 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
-import SplashPage from './SplashPage';
-import LoginPage from './LoginPage';
-import RegisterPage from './RegisterPage';
-import ResetPasswordPage from './ResetPasswordPage';
-import AboutPage from './AboutPage';
-import LearnMorePage from './LearnMorePage';
-import ContactPage from './ContactPage';
-import ProtectedRoute from './ProtectedRoute';
-import DashboardPage from './DashboardPage';
-import ProfilePage from './ProfilePage';
-import RestYourMindPage from './RestYourMindPage';
-import FeelingsCheckInPage from './FeelingsCheckInPage';
-import AmbientMusicPlayerPage from './AmbientMusicPlayerPage';
-import ErrorPage from './ErrorPage';
+import LoginPage from './Components/LoginPage/LoginPage.js';
+import SplashPage from './Components/SplashPage/SplashPage.js'
+import RegisterPage from './Components/RegisterPage/RegisterPage.js';
+import ResetPasswordPage from './Components/ResetPassword/ResetPassword.js';
+import ProtectedRoute from './Components/GeneralComponents/ProtectedRoute.js';
+import DashboardPage from './Components/DashboardPage/DashboardPage.js';
+import RestYourMindPage from './Components/RestYourMindPage/RestYourMindPage.js'
+import FeelingsCheckInPage from "./Components/FeelingsCheckIn/FeelingsCheckIn.js";
+import AmbientMusicPlayerPage from "./Components/AmbientPlayerPage/AmbientPlayerPage.js";
+import ErrorPage from "./Components/ErrorPage/ErrorPage.js";
+import AboutPage from './Components/AboutPage/AboutPage.js';
+import ContactPage from './Components/ContactUsPage/ContactUsPage.js';
+import ProfilePage from './Components/ProfilePage/ProfilePage.js';
+import LearnMorePage from './Components/LearnMorePage/LearnMorePage.js';
+import AuthServiceInstance from './Components/GeneralComponents/AuthService.js';
+import './styles/styles.css'; 
 
 const App = () => {
-  const isAuthenticated = false; // Update this based on your authentication logic
+
+  const isAuthenticated = AuthServiceInstance.isAuthenticated();
 
   return (
-    <Router>
+    <>
       <header>
         <nav>
           <Link to="/"><img src="logo.png" alt="HowRU Logo" className="logo" /></Link>
@@ -42,7 +45,8 @@ const App = () => {
           </ul>
         </nav>
       </header>
-
+      
+    
       <Routes>
         <Route path="/" element={<SplashPage />} />
         <Route path="/login" element={<LoginPage />} />
@@ -60,7 +64,8 @@ const App = () => {
         </Route> 
         <Route path="/*" element={<ErrorPage />} />
       </Routes>
-    </Router>
+    
+    </>
   );
 }
 

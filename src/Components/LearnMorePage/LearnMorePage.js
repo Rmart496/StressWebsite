@@ -1,9 +1,11 @@
 import React from 'react';
 import './LearnMorePage.scss';
 import calmingImage from '../../Assets/channel-your-energy.jpeg';
+import SkeletonForAllPages from "../GeneralComponents/SkeletonForAllPages";
 
 const LearnMorePage = () => {
   return (
+    <SkeletonForAllPages>
     <div className="learn-more-container">
       <h1 className="learn-more-title">Channel Your Relief</h1>
       <p className="learn-more-intro">
@@ -50,6 +52,7 @@ const LearnMorePage = () => {
         </div>
       </section>
     </div>
+    </SkeletonForAllPages>
   );
 };
 
