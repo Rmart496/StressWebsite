@@ -1,7 +1,7 @@
 import React from "react";
 import AuthServiceInstance from "./AuthService";
 import "../../Styling/bootstrap.css";
-import { Link } from "@mui/material";
+import { Link as MuiLink } from "@mui/material";
 import { Link as RouterLink, useNavigate } from "react-router-dom";
 import logo from "../../Assets/logo.png";
 
@@ -43,81 +43,101 @@ const AccountNavbar = () => {
     };
 
     return (
-        <nav className="navbar navbar-expand-lg p-3 fixed-top" style={navbarColor}>
-            <div className="navbar-brand">
-                <img src={logo} alt="logo" style={logoStyle} />
-            </div>
+        <header>
+            <nav className="navbar navbar-expand-lg p-3 fixed-top" style={navbarColor}>
+                <div className="navbar-brand">
+                    <RouterLink to="/">
+                        <img src={logo} alt="HowRU Logo" style={logoStyle} />
+                    </RouterLink>
+                </div>
 
-            <div className="collapse navbar-collapse" id="navbarNav">
-                <ul className="navbar-nav">
-                    <li className="nav-item">
-                        <Link component={RouterLink} to="/" underline="hover" className="p-2 m-2">
-                            Home
-                        </Link>
-                    </li>
-                    <li className="nav-item">
-                        {sessionStorage.getItem('name') !== null ? (
-                            <Link
-                                component={RouterLink}
-                                to="/dashboard"
-                                underline="hover"
-                                style={createAccountButton}
-                                className="p-2 m-2 text-white"
-                            >
-                                Dashboard
-                            </Link>
-                        ) : (
-                            <Link component={RouterLink} to="/login" underline="hover" className="p-2 m-2">
-                                Sign in
-                            </Link>
-                        )}
-                    </li>
-
-                    {isAuthenticated && (
+                <div className="collapse navbar-collapse" id="navbarNav">
+                    <ul className="navbar-nav">
                         <li className="nav-item">
-                            <Link component={RouterLink} to="/my-profile" underline="hover" className="p-2 m-2">
-                                My Profile
-                            </Link>
+                            <MuiLink component={RouterLink} to="/" underline="hover" className="p-2 m-2">
+                                Home
+                            </MuiLink>
                         </li>
-                    )}
-
-                    <li className="nav-item">
-                        {sessionStorage.getItem('name') !== null ? null : (
-                            <Link
-                                component={RouterLink}
-                                to="/register"
-                                underline="hover"
-                                className="p-2 m-2"
-                                style={buttonDarkBlueBackground}
-                            >
-                                Create account
-                            </Link>
+                        <li className="nav-item">
+                            <MuiLink component={RouterLink} to="/about" underline="hover" className="p-2 m-2">
+                                About Us
+                            </MuiLink>
+                        </li>
+                        <li className="nav-item">
+                            <MuiLink component={RouterLink} to="/contact" underline="hover" className="p-2 m-2">
+                                Contact Us
+                            </MuiLink>
+                        </li>
+                        <li className="nav-item">
+                            <MuiLink component={RouterLink} to="/learnmore" underline="hover" className="p-2 m-2">
+                                Learn More
+                            </MuiLink>
+                        </li>
+                        <li className="nav-item">
+                            {isAuthenticated ? (
+                                <>
+                                    <MuiLink
+                                        component={RouterLink}
+                                        to="/dashboard"
+                                        underline="hover"
+                                        className="p-2 m-2"
+                                    >
+                                        Dashboard
+                                    </MuiLink>
+                                    <MuiLink
+                                        component={RouterLink}
+                                        to="/my-profile"
+                                        underline="hover"
+                                        className="p-2 m-2"
+                                    >
+                                        My Profile
+                                    </MuiLink>
+                                </>
+                            ) : (
+                                <>
+                                    <MuiLink
+                                        component={RouterLink}
+                                        to="/login"
+                                        underline="hover"
+                                        className="p-2 m-2"
+                                    >
+                                        Sign In
+                                    </MuiLink>
+                                    <MuiLink
+                                        component={RouterLink}
+                                        to="/register"
+                                        underline="hover"
+                                        className="p-2 m-2"
+                                        style={buttonDarkBlueBackground}
+                                    >
+                                        Create Account
+                                    </MuiLink>
+                                </>
+                            )}
+                        </li>
+                        {isAuthenticated && (
+                            <li className="nav-item">
+                                <MuiLink
+                                    style={createAccountButton}
+                                    onClick={handleLogout}
+                                    underline="hover"
+                                    className="p-2 m-2 text-white"
+                                >
+                                    Logout
+                                </MuiLink>
+                            </li>
                         )}
-                    </li>
-
-                    <li className="nav-item">
-                        {sessionStorage.getItem('name') === null ? null : (
-                            <Link
-                                style={createAccountButton}
-                                onClick={handleLogout}
-                                underline="hover"
-                                className="p-2 m-2 text-white"
-                            >
-                                Logout
-                            </Link>
+                        {isAuthenticated && (
+                            <li className="nav-item">
+                                <h5 className="d-inline-block pr-2 m-0 text-white">
+                                    Hello, {sessionStorage.getItem('name')}
+                                </h5>
+                            </li>
                         )}
-                    </li>
-
-                    <li className="nav-item">
-                        {sessionStorage.getItem('name') === null ? null : (
-                            <h5 className="d-inline-block pr-2 m-0 text-white">
-                                Hello, {sessionStorage.getItem('name')}
-                            </h5>
-                        )}
-                    </li>
-                </ul>
-            </div>
-        </nav>
+                    </ul>
+                </div>
+            </nav>
+        </header>
     );
 };
 
