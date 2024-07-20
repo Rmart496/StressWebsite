@@ -2,9 +2,11 @@ import React from "react";
 import './ContactUs.scss';
 import logo from '../../Assets/logo.png';
 import forestBorder from '../../Assets/forestborder.jpg';
+import SkeletonForAllPages from '../GeneralComponents/SkeletonForAllPages';
 
 const ContactUsPage = () => {
   return (
+    <SkeletonForAllPages>
     <div className="contact-page">
       <header className="contact-header">
         <img src={forestBorder} alt="Forest Border" className="forest-border" />
@@ -38,6 +40,7 @@ const ContactUsPage = () => {
         </section>
       </div>
     </div>
+    </SkeletonForAllPages>
   );
 };
 

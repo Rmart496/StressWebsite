@@ -23,7 +23,7 @@ const App = () => {
 
   return (
     <>
-      <header>
+      {/* <header>
         <nav>
           <Link to="/"><img src="logo.png" alt="HowRU Logo" className="logo" /></Link>
           <ul>
@@ -44,7 +44,7 @@ const App = () => {
             )}
           </ul>
         </nav>
-      </header>
+      </header> */}
       
     
       <Routes>

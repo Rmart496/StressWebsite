@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import './ProfilePage.scss'; // Adjust the path as necessary
 import profilePic from '../../Assets/default profile pic.jpg'; // Import the profile picture
+import SkeletonForAllPages from '../GeneralComponents/SkeletonForAllPages';
+
 
 const ProfilePage = () => {
   const [bio, setBio] = useState('');
@@ -27,6 +29,7 @@ const ProfilePage = () => {
   };
 
   return (
+    <SkeletonForAllPages>
     <div className="profile-page">
       <aside className="profile-sidebar">
         <nav>
@@ -64,6 +67,7 @@ const ProfilePage = () => {
         <button onClick={handleSave} className="save-button">Save</button>
       </div>
     </div>
+    </SkeletonForAllPages>
   );
 };
 

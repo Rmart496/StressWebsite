@@ -4,9 +4,11 @@ import bluemount from '../../Assets/bluemount.jpg';
 import goldenhr from '../../Assets/goldenhr.jpg';
 import purpleplants from '../../Assets/purpleplants.jpg';
 import stars from '../../Assets/stars.jpg';
+import SkeletonForAllPages from '../GeneralComponents/SkeletonForAllPages';
 
 const AboutPage = () => {
   return (
+    <SkeletonForAllPages>
     <div className="about-page">
       <div className="about-images">
         <img src={bluemount} alt="Blue Mountains" />
@@ -35,6 +37,7 @@ const AboutPage = () => {
         </div>
       </div>
     </div>
+    </SkeletonForAllPages>
   );
 };
 
