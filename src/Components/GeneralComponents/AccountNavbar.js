@@ -74,7 +74,7 @@ const AccountNavbar = () => {
                             </MuiLink>
                         </li>
                         <li className="nav-item">
-                            {isAuthenticated ? (
+                            {sessionStorage.getItem('user_name') != null ? (
                                 <>
                                     <MuiLink
                                         component={RouterLink}
@@ -115,7 +115,7 @@ const AccountNavbar = () => {
                                 </>
                             )}
                         </li>
-                        {isAuthenticated && (
+                        {sessionStorage.getItem('user_name') != null && (
                             <li className="nav-item">
                                 <MuiLink
                                     style={createAccountButton}
@@ -127,7 +127,7 @@ const AccountNavbar = () => {
                                 </MuiLink>
                             </li>
                         )}
-                        {isAuthenticated && (
+                        {sessionStorage.getItem('user_name') != null && (
                             <li className="nav-item">
                                 <h5 className="d-inline-block pr-2 m-0 text-white">
                                     Hello, {sessionStorage.getItem('name')}

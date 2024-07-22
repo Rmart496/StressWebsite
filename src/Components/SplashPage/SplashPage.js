@@ -44,14 +44,20 @@ const SplashPage = () => {
 		boxShadow: "5px 5px 5px 0px rgba(0,0,0,0.75)"
 	}
 
+	const jumbotronLogo = {
+		display: "block",
+		margin: "auto",
+		height: "400px",
+		width: "400px"
+	}
+
 	return (
 		<SkeletonForAllPages>
 			<div className="container-fluid p-0">
 				<div className="row p-0">
 					<div className="row p-0">
 						<div className="jumbotron p-0">
-							<img className="jumbotron-image" src="https://images.unsplash.com/photo-1534796636912-3b95b3ab5986?q=80&w=3871&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="stones" />
-							<div className="jumbotron-text">HowRU</div>
+							<img style={jumbotronLogo} src={logo} alt="stones" />
 						</div>
 					</div>
 
@@ -82,21 +88,6 @@ const SplashPage = () => {
     </text>
 </svg>
 
-						</div>
-					</div>
-
-					<div className="row p-0">
-
-						<div className="col-md-12 blueBG p-5 text-light p-0" style={featureContainer}>
-							<h3 className="display-4 text-center">Features</h3>
-
-							<div className="container">
-								<div className="row">
-									<div className="col-md-4">Help Us Help YOU</div>
-									<div className="col-md-4">Focus</div>
-									<div className="col-md-4">Meditate</div>
-								</div>
-							</div>
 						</div>
 					</div>
 					<MembershipSection/>

@@ -156,11 +156,13 @@ const AmbientPlayerPage = () => {
 		
 	return (
 		<SkeletonForAllPages>
-		<div style={{display: "block"}}>
+		<div style={{display: "block", width: "100%"}}>
 			<ReactECharts option={pieChart_Triggers} style={{height: "450px", width: "30%", float: "left"}}/>
 			<ReactECharts option={pieChart_Feelings} style={{height: "450px", width: "30%", float: "left"}}/>
 			<ReactECharts option={pieChart_Signs} style={{height: "450px", width: "30%", float: "left"}}/>
 			<ReactECharts option={pieChart_Strategies} style={{height: "450px", width: "30%", float: "left"}}/>
+		</div>
+		<div style={{display: "block", width: "100%"}}>
 			<ReactECharts option={lineGraph} style={{height: "450px", width: "50%", float: "left"}}/>
 			<ReactECharts option={calendar} style={{height: "450px", width: "50%", float: "left"}}/>
 		</div>
