@@ -12,6 +12,7 @@ const FeelingsCheckIn = () => {
     const [schoolStressor, setSchoolStressor] = useState("");
     const [socialStressor, setSocialStressor] = useState("");
     const [page, setCurrentPage] = useState('feelingTodayPage');
+    const [pageHistory, setPageHistory] = useState([]);
     const [selectedFeelingImage, setSelectedFeelingImage] = useState("");
 
     const styles = {
@@ -41,29 +42,37 @@ const FeelingsCheckIn = () => {
         }
     };
 
+    const navigateToPage = (nextPage) => {
+        setPageHistory([...pageHistory, page]);
+        setCurrentPage(nextPage);
+    };
+
+    const goBack = () => {
+        const newPageHistory = [...pageHistory];
+        const previousPage = newPageHistory.pop();
+        setPageHistory(newPageHistory);
+        setCurrentPage(previousPage);
+    };
+
     const updateFeeling = (e) => {
-        console.log(e.target.value);
         setFeeling(parseInt(e.target.value));
-        console.log(page);
     };
 
     const updateControl = (e) => {
         setControl(parseInt(e.target.value));
-        console.log(page);
     };
 
     const uploadFeelingCheckIn = (e) => {
         e.preventDefault();
-        const feelingCheckInToken = {};
-        feelingCheckInToken['uid'] = sessionStorage.getItem('login_token');
-        feelingCheckInToken['feeling_rating'] = feeling;
-        feelingCheckInToken['control_rating'] = control;
-        feelingCheckInToken['selected_feeling_image'] = selectedFeelingImage;
+        const feelingCheckInToken = {
+            uid: sessionStorage.getItem('login_token'),
+            feeling_rating: feeling,
+            control_rating: control,
+            selected_feeling_image: selectedFeelingImage
+        };
 
-        console.log(feelingCheckInToken);
         AuthServiceInstance.addFeelingCheckIn(feelingCheckInToken);
     };
-
     const feelingImages = [
         { src: 'happy.svg', alt: 'Happy', value: 'happy' },
         { src: 'sad.svg', alt: 'Sad', value: 'sad' },
@@ -77,7 +86,12 @@ const FeelingsCheckIn = () => {
                 <div className="container-fluid">
                     <div className="row">
                         <div className="col-md-6 questions d-flex align-items-center justify-content-center flex-column">
-                            <legend className="text-center fs-1">Feeling Check In</legend>
+                            <legend className="text-center fs-1">Feelings Check In</legend>
+
+                            {pageHistory.length > 0 && (
+                                <button onClick={goBack} className="btn btn-secondary mb-3">Back</button>
+                            )}
+
                             <div className="range-container" style={styles.feelingTodayPage}>
                                 <label htmlFor="rangeInput">How are you feeling today?</label>
                                 <input type="range"
@@ -86,20 +100,8 @@ const FeelingsCheckIn = () => {
                                     max="5"
                                     value={feeling}
                                     onChange={updateFeeling}
-                                    onMouseUp={() => setCurrentPage("controlTodayPage")} />
+                                    onMouseUp={() => navigateToPage("stressorOfTheDayPage")} />
                                 <span id="textInput">{feeling}</span>
-                            </div>
-
-                            <div className="range-container" style={styles.controlTodayPage}>
-                                <label htmlFor="rangeInput">How in control are you today?</label>
-                                <input type="range"
-                                    id="rangeInput"
-                                    min="1"
-                                    max="5"
-                                    value={control}
-                                    onChange={updateControl}
-                                    onMouseUp={() => setCurrentPage("stressorOfTheDayPage")} />
-                                <span id="textInput">{control}</span>
                             </div>
 
                             <div className="image-selection-container" style={styles.feelingTodayPage}>
@@ -113,7 +115,7 @@ const FeelingsCheckIn = () => {
                                             className={selectedFeelingImage === image.value ? 'selected' : ''}
                                             onClick={() => {
                                                 setSelectedFeelingImage(image.value);
-                                                setCurrentPage("controlTodayPage");
+                                                navigateToPage("stressorOfTheDayPage");
                                             }}
                                         />
                                     ))}
@@ -127,8 +129,8 @@ const FeelingsCheckIn = () => {
                                     <label className="custom-radio">
                                         <input type="radio" id="home" name="stressor" value="home"
                                             onClick={() => {
-                                                setCurrentPage("homeStressorsPage");
                                                 setStressorOTD("home");
+                                                navigateToPage("homeStressorsPage");
                                             }} />
                                         <span className="radio-btn"><i className="las la-check"></i>
                                             <div className="hobbies-icon">
@@ -140,8 +142,8 @@ const FeelingsCheckIn = () => {
                                     <label className="custom-radio">
                                         <input type="radio" id="work" name="stressor" value="work"
                                             onClick={() => {
-                                                setCurrentPage("workStressorsPage");
                                                 setStressorOTD("work");
+                                                navigateToPage("workStressorsPage");
                                             }} />
                                         <span className="radio-btn"><i className="las la-check"></i>
                                             <div className="hobbies-icon">
@@ -153,8 +155,8 @@ const FeelingsCheckIn = () => {
                                     <label className="custom-radio">
                                         <input type="radio" id="school" name="stressor" value="school"
                                             onClick={() => {
-                                                setCurrentPage("schoolStressorsPage");
                                                 setStressorOTD("school");
+                                                navigateToPage("schoolStressorsPage");
                                             }} />
                                         <span className="radio-btn"><i className="las la-check"></i>
                                             <div className="hobbies-icon">
@@ -166,8 +168,8 @@ const FeelingsCheckIn = () => {
                                     <label className="custom-radio">
                                         <input type="radio" id="socialsetting" name="stressor" value="socialsetting"
                                             onClick={() => {
-                                                setCurrentPage("socialStressorsPage");
                                                 setStressorOTD("socialsetting");
+                                                navigateToPage("socialStressorsPage");
                                             }} />
                                         <span className="radio-btn"><i className="las la-check"></i>
                                             <div className="hobbies-icon">
@@ -185,10 +187,10 @@ const FeelingsCheckIn = () => {
                                     <label className="custom-radio">
                                         <input type="radio" id="partner" name="homeStressors" value="partner"
                                             onClick={() => {
-                                                setCurrentPage("thankYouPage");
                                                 setHomeStressor("partner");
+                                                navigateToPage("controlTodayPage");
                                             }} />
-                                        <span className="radio-btn"><i className="las la-checked"></i>
+                                        <span className="radio-btn"><i className="las la-check"></i>
                                             <div className="hobbies-icon">
                                                 <h3>Partner</h3>
                                             </div>
@@ -198,10 +200,10 @@ const FeelingsCheckIn = () => {
                                     <label className="custom-radio">
                                         <input type="radio" id="family" name="homeStressors" value="family"
                                             onClick={() => {
-                                                setCurrentPage("thankYouPage");
                                                 setHomeStressor("family");
+                                                navigateToPage("controlTodayPage");
                                             }} />
-                                        <span className="radio-btn"><i className="las la-checked"></i>
+                                        <span className="radio-btn"><i className="las la-check"></i>
                                             <div className="hobbies-icon">
                                                 <h3>Family</h3>
                                             </div>
@@ -209,12 +211,12 @@ const FeelingsCheckIn = () => {
                                     </label>
 
                                     <label className="custom-radio">
-                                        <input type="radio" id="Financial" name="homeStressors" value="Financial"
+                                        <input type="radio" id="financial" name="homeStressors" value="financial"
                                             onClick={() => {
-                                                setCurrentPage("thankYouPage");
                                                 setHomeStressor("financial");
+                                                navigateToPage("controlTodayPage");
                                             }} />
-                                        <span className="radio-btn"><i className="las la-checked"></i>
+                                        <span className="radio-btn"><i className="las la-check"></i>
                                             <div className="hobbies-icon">
                                                 <h3>Financial</h3>
                                             </div>
@@ -224,10 +226,10 @@ const FeelingsCheckIn = () => {
                                     <label className="custom-radio">
                                         <input type="radio" id="domesticduties" name="homeStressors" value="domesticduties"
                                             onClick={() => {
-                                                setCurrentPage("thankYouPage");
                                                 setHomeStressor("domesticduties");
+                                                navigateToPage("controlTodayPage");
                                             }} />
-                                        <span className="radio-btn"><i className="las la-checked"></i>
+                                        <span className="radio-btn"><i className="las la-check"></i>
                                             <div className="hobbies-icon">
                                                 <h3>Domestic Duties</h3>
                                             </div>
@@ -237,10 +239,10 @@ const FeelingsCheckIn = () => {
                                     <label className="custom-radio">
                                         <input type="radio" id="sickness" name="homeStressors" value="sickness"
                                             onClick={() => {
-                                                setCurrentPage("thankYouPage");
-                                                setWorkStressor("sickness");
+                                                setHomeStressor("sickness");
+                                                navigateToPage("controlTodayPage");
                                             }} />
-                                        <span className="radio-btn"><i className="las la-checked"></i>
+                                        <span className="radio-btn"><i className="las la-check"></i>
                                             <div className="hobbies-icon">
                                                 <h3>Sickness</h3>
                                             </div>
@@ -256,10 +258,10 @@ const FeelingsCheckIn = () => {
                                     <label className="custom-radio">
                                         <input type="radio" id="colleagues" name="workStressors" value="colleagues"
                                             onClick={() => {
-                                                setCurrentPage("thankYouPage");
                                                 setWorkStressor("colleagues");
+                                                navigateToPage("controlTodayPage");
                                             }} />
-                                        <span className="radio-btn"><i className="las la-checked"></i>
+                                        <span className="radio-btn"><i className="las la-check"></i>
                                             <div className="hobbies-icon">
                                                 <h3>Colleagues</h3>
                                             </div>
@@ -269,10 +271,10 @@ const FeelingsCheckIn = () => {
                                     <label className="custom-radio">
                                         <input type="radio" id="boss" name="workStressors" value="boss"
                                             onClick={() => {
-                                                setCurrentPage("thankYouPage");
                                                 setWorkStressor("boss");
+                                                navigateToPage("controlTodayPage");
                                             }} />
-                                        <span className="radio-btn"><i className="las la-checked"></i>
+                                        <span className="radio-btn"><i className="las la-check"></i>
                                             <div className="hobbies-icon">
                                                 <h3>Boss</h3>
                                             </div>
@@ -282,10 +284,10 @@ const FeelingsCheckIn = () => {
                                     <label className="custom-radio">
                                         <input type="radio" id="employees" name="workStressors" value="employees"
                                             onClick={() => {
-                                                setCurrentPage("thankYouPage");
                                                 setWorkStressor("employees");
+                                                navigateToPage("controlTodayPage");
                                             }} />
-                                        <span className="radio-btn"><i className="las la-checked"></i>
+                                        <span className="radio-btn"><i className="las la-check"></i>
                                             <div className="hobbies-icon">
                                                 <h3>Employees</h3>
                                             </div>
@@ -295,10 +297,10 @@ const FeelingsCheckIn = () => {
                                     <label className="custom-radio">
                                         <input type="radio" id="workload" name="workStressors" value="workload"
                                             onClick={() => {
-                                                setCurrentPage("thankYouPage");
                                                 setWorkStressor("workload");
+                                                navigateToPage("controlTodayPage");
                                             }} />
-                                        <span className="radio-btn"><i className="las la-checked"></i>
+                                        <span className="radio-btn"><i className="las la-check"></i>
                                             <div className="hobbies-icon">
                                                 <h3>Workload</h3>
                                             </div>
@@ -308,10 +310,10 @@ const FeelingsCheckIn = () => {
                                     <label className="custom-radio">
                                         <input type="radio" id="timemanagement" name="workStressors" value="timemanagement"
                                             onClick={() => {
-                                                setCurrentPage("thankYouPage");
                                                 setWorkStressor("timemanagement");
+                                                navigateToPage("controlTodayPage");
                                             }} />
-                                        <span className="radio-btn"><i className="las la-checked"></i>
+                                        <span className="radio-btn"><i className="las la-check"></i>
                                             <div className="hobbies-icon">
                                                 <h3>Time Management</h3>
                                             </div>
@@ -321,10 +323,10 @@ const FeelingsCheckIn = () => {
                                     <label className="custom-radio">
                                         <input type="radio" id="workculture" name="workStressors" value="workculture"
                                             onClick={() => {
-                                                setCurrentPage("thankYouPage");
                                                 setWorkStressor("workculture");
+                                                navigateToPage("controlTodayPage");
                                             }} />
-                                        <span className="radio-btn"><i className="las la-checked"></i>
+                                        <span className="radio-btn"><i className="las la-check"></i>
                                             <div className="hobbies-icon">
                                                 <h3>Work Culture</h3>
                                             </div>
@@ -340,10 +342,10 @@ const FeelingsCheckIn = () => {
                                     <label className="custom-radio">
                                         <input type="radio" id="homework" name="schoolStressors" value="homework"
                                             onClick={() => {
-                                                setCurrentPage("thankYouPage");
                                                 setSchoolStressor("homework");
+                                                navigateToPage("controlTodayPage");
                                             }} />
-                                        <span className="radio-btn"><i className="las la-checked"></i>
+                                        <span className="radio-btn"><i className="las la-check"></i>
                                             <div className="hobbies-icon">
                                                 <h3>Homework</h3>
                                             </div>
@@ -353,10 +355,10 @@ const FeelingsCheckIn = () => {
                                     <label className="custom-radio">
                                         <input type="radio" id="exams" name="schoolStressors" value="exams"
                                             onClick={() => {
-                                                setCurrentPage("thankYouPage");
                                                 setSchoolStressor("exams");
+                                                navigateToPage("controlTodayPage");
                                             }} />
-                                        <span className="radio-btn"><i className="las la-checked"></i>
+                                        <span className="radio-btn"><i className="las la-check"></i>
                                             <div className="hobbies-icon">
                                                 <h3>Exams</h3>
                                             </div>
@@ -366,10 +368,10 @@ const FeelingsCheckIn = () => {
                                     <label className="custom-radio">
                                         <input type="radio" id="organization" name="schoolStressors" value="organization"
                                             onClick={() => {
-                                                setCurrentPage("thankYouPage");
                                                 setSchoolStressor("organization");
+                                                navigateToPage("controlTodayPage");
                                             }} />
-                                        <span className="radio-btn"><i className="las la-checked"></i>
+                                        <span className="radio-btn"><i className="las la-check"></i>
                                             <div className="hobbies-icon">
                                                 <h3>Organization</h3>
                                             </div>
@@ -379,10 +381,10 @@ const FeelingsCheckIn = () => {
                                     <label className="custom-radio">
                                         <input type="radio" id="bullying" name="schoolStressors" value="bullying"
                                             onClick={() => {
-                                                setCurrentPage("thankYouPage");
                                                 setSchoolStressor("bullying");
+                                                navigateToPage("controlTodayPage");
                                             }} />
-                                        <span className="radio-btn"><i className="las la-checked"></i>
+                                        <span className="radio-btn"><i className="las la-check"></i>
                                             <div className="hobbies-icon">
                                                 <h3>Bullying</h3>
                                             </div>
@@ -392,10 +394,10 @@ const FeelingsCheckIn = () => {
                                     <label className="custom-radio">
                                         <input type="radio" id="performance" name="schoolStressors" value="performance"
                                             onClick={() => {
-                                                setCurrentPage("thankYouPage");
                                                 setSchoolStressor("performance");
+                                                navigateToPage("controlTodayPage");
                                             }} />
-                                        <span className="radio-btn"><i className="las la-checked"></i>
+                                        <span className="radio-btn"><i className="las la-check"></i>
                                             <div className="hobbies-icon">
                                                 <h3>Performance</h3>
                                             </div>
@@ -405,10 +407,10 @@ const FeelingsCheckIn = () => {
                                     <label className="custom-radio">
                                         <input type="radio" id="financial" name="schoolStressors" value="financial"
                                             onClick={() => {
-                                                setCurrentPage("thankYouPage");
                                                 setSchoolStressor("financial");
+                                                navigateToPage("controlTodayPage");
                                             }} />
-                                        <span className="radio-btn"><i className="las la-checked"></i>
+                                        <span className="radio-btn"><i className="las la-check"></i>
                                             <div className="hobbies-icon">
                                                 <h3>Financial</h3>
                                             </div>
@@ -424,10 +426,10 @@ const FeelingsCheckIn = () => {
                                     <label className="custom-radio">
                                         <input type="radio" id="socialmedia" name="socialStressors" value="socialmedia"
                                             onClick={() => {
-                                                setCurrentPage("thankYouPage");
                                                 setSocialStressor("socialmedia");
+                                                navigateToPage("controlTodayPage");
                                             }} />
-                                        <span className="radio-btn"><i className="las la-checked"></i>
+                                        <span className="radio-btn"><i className="las la-check"></i>
                                             <div className="hobbies-icon">
                                                 <h3>Social Media</h3>
                                             </div>
@@ -437,10 +439,10 @@ const FeelingsCheckIn = () => {
                                     <label className="custom-radio">
                                         <input type="radio" id="traffic" name="socialStressors" value="traffic"
                                             onClick={() => {
-                                                setCurrentPage("thankYouPage");
                                                 setSocialStressor("traffic");
+                                                navigateToPage("controlTodayPage");
                                             }} />
-                                        <span className="radio-btn"><i className="las la-checked"></i>
+                                        <span className="radio-btn"><i className="las la-check"></i>
                                             <div className="hobbies-icon">
                                                 <h3>Traffic</h3>
                                             </div>
@@ -450,10 +452,10 @@ const FeelingsCheckIn = () => {
                                     <label className="custom-radio">
                                         <input type="radio" id="isolation" name="socialStressors" value="isolation"
                                             onClick={() => {
-                                                setCurrentPage("thankYouPage");
-                                                setSocialStressor("traffic");
+                                                setSocialStressor("isolation");
+                                                navigateToPage("controlTodayPage");
                                             }} />
-                                        <span className="radio-btn"><i className="las la-checked"></i>
+                                        <span className="radio-btn"><i className="las la-check"></i>
                                             <div className="hobbies-icon">
                                                 <h3>Isolation</h3>
                                             </div>
@@ -463,10 +465,10 @@ const FeelingsCheckIn = () => {
                                     <label className="custom-radio">
                                         <input type="radio" id="friendsdispute" name="socialStressors" value="friendsdispute"
                                             onClick={() => {
-                                                setCurrentPage("thankYouPage");
                                                 setSocialStressor("friendsdispute");
+                                                navigateToPage("controlTodayPage");
                                             }} />
-                                        <span className="radio-btn"><i className="las la-checked"></i>
+                                        <span className="radio-btn"><i className="las la-check"></i>
                                             <div className="hobbies-icon">
                                                 <h3>Friends Dispute</h3>
                                             </div>
@@ -476,10 +478,10 @@ const FeelingsCheckIn = () => {
                                     <label className="custom-radio">
                                         <input type="radio" id="sportsperformance" name="socialStressors" value="sportsperformance"
                                             onClick={() => {
-                                                setCurrentPage("thankYouPage");
                                                 setSocialStressor("sportsperformance");
+                                                navigateToPage("controlTodayPage");
                                             }} />
-                                        <span className="radio-btn"><i className="las la-checked"></i>
+                                        <span className="radio-btn"><i className="las la-check"></i>
                                             <div className="hobbies-icon">
                                                 <h3>Sports Performance</h3>
                                             </div>
@@ -488,16 +490,28 @@ const FeelingsCheckIn = () => {
                                 </div>
                             </fieldset>
 
+                            <div className="range-container" style={styles.controlTodayPage}>
+                                <label htmlFor="rangeInput">What is your intention to change?</label>
+                                <input type="range"
+                                    id="rangeInput"
+                                    min="1"
+                                    max="5"
+                                    value={control}
+                                    onChange={updateControl}
+                                    onMouseUp={() => navigateToPage("thankYouPage")} />
+                                <span id="textInput">{control}</span>
+                            </div>
+
                             <h1 style={styles.thankYouPage}>Thank you!</h1>
                         </div>
-                        <div className="col-md-6 results d-flex align-items-center justify-content-center flex-column" style={styles.thankYouPage}>
+                        <div className="col-md-6 results d-flex align-items-center justify-content-center flex-column" style={{ display: "block" }}>
                             <div className="font-monospace">Feeling 1-5: {feeling}</div>
-                            <div className="font-monospace">Control 1-5: {control}</div>
                             <div className="font-monospace">Stressor of the day: {stressorOTD}</div>
                             <div className="font-monospace">Home stressor: {homeStressor}</div>
                             <div className="font-monospace">Work stressor: {workStressor}</div>
                             <div className="font-monospace">School stressor: {schoolStressor}</div>
                             <div className="font-monospace">Social stressor: {socialStressor}</div>
+                            <div className="font-monospace">Intention to make Changes 1-5: {control}</div>
                             <div className="font-monospace">Selected Feeling Image: {selectedFeelingImage}</div>
                             <button type="reset" onClick={() => { window.location.reload() }}>Restart</button>
                             <button type="submit">Document Feeling</button>
