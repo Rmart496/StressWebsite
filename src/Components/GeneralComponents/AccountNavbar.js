@@ -130,7 +130,7 @@ const AccountNavbar = () => {
                         {sessionStorage.getItem('user_name') != null && (
                             <li className="nav-item">
                                 <h5 className="d-inline-block pr-2 m-0 text-white">
-                                    Hello, {sessionStorage.getItem('name')}
+                                    Hello, {sessionStorage.getItem('user_name')}
                                 </h5>
                             </li>
                         )}

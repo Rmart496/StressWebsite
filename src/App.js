@@ -9,6 +9,7 @@ import DashboardPage from './Components/DashboardPage/DashboardPage.js';
 import RestYourMindPage from './Components/RestYourMindPage/RestYourMindPage.js'
 import FeelingsCheckInPage from "./Components/FeelingsCheckIn/FeelingsCheckIn.js";
 import AmbientMusicPlayerPage from "./Components/AmbientPlayerPage/AmbientPlayerPage.js";
+import RoadMapPage from "./Components/RoadMapPage/RoadMapPage.js"
 import ErrorPage from "./Components/ErrorPage/ErrorPage.js";
 import AboutPage from './Components/AboutPage/AboutPage.js';
 import ContactPage from './Components/ContactUsPage/ContactUsPage.js';
@@ -61,6 +62,7 @@ const App = () => {
           <Route path="/restyourmind" element={<RestYourMindPage />} /> 
           <Route path="/check-in" element={<FeelingsCheckInPage />} />
           <Route path="/ambientmusic" element={<AmbientMusicPlayerPage />} />
+          <Route path="/roadmap" element={<RoadMapPage/>} />
         </Route> 
         <Route path="/*" element={<ErrorPage />} />
       </Routes>

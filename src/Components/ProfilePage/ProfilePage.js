@@ -38,7 +38,6 @@ const ProfilePage = () => {
             <li><Link to="/notifications">Notifications</Link></li>
             <li><Link to="/about">About</Link></li>
             <li><Link to="/help">Help</Link></li>
-            <li><Link to="/logout">Logout</Link></li>
           </ul>
         </nav>
       </aside>
@@ -67,6 +66,7 @@ const ProfilePage = () => {
         <button onClick={handleSave} className="save-button">Save</button>
       </div>
     </div>
+    
     </SkeletonForAllPages>
   );
 };
